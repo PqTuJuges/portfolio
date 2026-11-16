@@ -47,7 +47,7 @@ class ProjectSeeder extends Seeder
             'title' => 'Todolist',
             'slug' => 'todolist',
             'summary' => 'Liste de tâches en Vue.js : ajout, suppression, cases à cocher, compteur de tâches terminées, tri et réorganisation par flèches.',
-            'content' => '<p>Contexte : une page avec une todolist </p>',
+            'content' => '<p>Contexte : une page avec une todoliste </p>',
             'cover_path' => 'images/todolist.jpg',
             'demo_url' => null,
             'repo_url' => null,
