@@ -2,6 +2,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { initializeTheme } from '@/composables/useAppearance';
 import AppLayout from '@/layouts/AppLayout.vue';
 import AuthLayout from '@/layouts/AuthLayout.vue';
+import PublicLayout from '@/layouts/PublicLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
 import { initializeFlashToast } from '@/lib/flashToast';
 
@@ -18,7 +19,7 @@ void createInertiaApp({
             case name === 'Dashboard' || name.startsWith('admin/'):
                 return AppLayout;
             default:
-                return null;
+                return PublicLayout;
         }
     },
     withApp: (app) => {

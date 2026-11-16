@@ -1,8 +1,11 @@
 <script setup>
+import { Head } from '@inertiajs/vue3';
+
 defineProps({ project: Object });
 </script>
 
 <template>
+    <Head :title="project.title" />
     <h1>{{ project.title }}</h1>
     <p>{{ project.summary }}</p>
     <img v-if="project.cover_url" :src="project.cover_url" alt="" width="400" />

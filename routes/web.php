@@ -11,6 +11,9 @@ Route::get('/', function () {
 Route::get('projets', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('projets/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
 
+Route::inertia('a-propos', 'About')->name('about');
+Route::inertia('contact', 'Contact')->name('contact');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 });
