@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,5 +18,15 @@ Route::inertia('contact', 'Contact')->name('contact');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
 });
+
+Route::middleware(['auth', 'verified'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::resource('projets', AdminProjectController::class)
+            ->except('show')
+            ->names('projects')
+            ->parameters(['projets' => 'project']);
+    });
 
 require __DIR__.'/settings.php';
