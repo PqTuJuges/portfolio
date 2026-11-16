@@ -1,0 +1,17 @@
+<script setup>
+defineProps({ project: Object });
+</script>
+
+<template>
+    <h1>{{ project.title }}</h1>
+    <p>{{ project.summary }}</p>
+    <img v-if="project.cover_url" :src="project.cover_url" alt="" width="400" />
+    <ul>
+        <li v-for="tag in project.tags" :key="tag">{{ tag }}</li>
+    </ul>
+    <div v-html="project.content"></div>
+    <p>
+        <a v-if="project.demo_url" :href="project.demo_url">Démo</a>
+        <a v-if="project.repo_url" :href="project.repo_url">Code</a>
+    </p>
+</template>
