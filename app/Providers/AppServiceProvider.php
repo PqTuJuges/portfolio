@@ -2,14 +2,14 @@
 
 namespace App\Providers;
 
-use Inertia\ExceptionResponse;
-use Inertia\Inertia;
-
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Inertia\ExceptionResponse;
+use Inertia\Inertia;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
             return null;
         });
     }
-
 
     /**
      * Configure default behaviors for production-ready applications.

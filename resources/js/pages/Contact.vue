@@ -4,5 +4,5 @@ import { Head } from '@inertiajs/vue3';
 
 <template>
     <Head title="Contact" />
-    
+    <h1>Contact</h1>
 </template>

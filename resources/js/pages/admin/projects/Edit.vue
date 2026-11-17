@@ -64,7 +64,11 @@ defineProps({
 
             <div class="grid gap-2">
                 <Label>Contenu</Label>
-                <RichTextEditor name="content" label="Contenu du projet" :default-value="project.content" />
+                <RichTextEditor
+                    name="content"
+                    label="Contenu du projet"
+                    :default-value="project.content"
+                />
                 <InputError :message="errors.content" />
             </div>
 

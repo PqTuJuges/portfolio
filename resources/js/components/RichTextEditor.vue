@@ -4,9 +4,9 @@ import { EditorContent, useEditor } from '@tiptap/vue-3';
 import { onBeforeUnmount, ref } from 'vue';
 
 const props = defineProps({
-    name: String,
+    name: { type: String, required: true },
     defaultValue: { type: String, default: '' },
-    label: String,
+    label: { type: String, default: 'Contenu' },
 });
 
 // Le HTML envoyé au serveur via le champ caché
@@ -53,7 +53,12 @@ function setLink() {
         return;
     }
 
-    editor.value.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+    editor.value
+        .chain()
+        .focus()
+        .extendMarkRange('link')
+        .setLink({ href: url })
+        .run();
 }
 
 const buttons = [
@@ -110,7 +115,10 @@ const buttons = [
 
 <template>
     <div class="rounded-md border border-input">
-        <div v-if="editor" class="flex flex-wrap gap-1 border-b border-input p-2">
+        <div
+            v-if="editor"
+            class="flex flex-wrap gap-1 border-b border-input p-2"
+        >
             <button
                 v-for="button in buttons"
                 :key="button.label"

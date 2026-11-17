@@ -5,7 +5,9 @@ import { home } from '@/routes';
 
 const props = defineProps({ status: Number });
 
-const title = computed(() => (props.status === 404 ? 'Page introuvable' : 'Accès refusé'));
+const title = computed(() =>
+    props.status === 404 ? 'Page introuvable' : 'Accès refusé',
+);
 
 const message = computed(() =>
     props.status === 404
