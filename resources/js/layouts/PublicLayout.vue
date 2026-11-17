@@ -1,24 +1,35 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import { Toaster } from '@/components/ui/sonner';
 import { about, contact, home } from '@/routes';
 import { index as projectsIndex } from '@/routes/projects';
 </script>
 
 <template>
-    <header>
-        <Link :href="home()">Mathias</Link>
-        <nav>
-            <Link :href="projectsIndex()">Projets</Link>
-            <Link :href="about()">À propos</Link>
-            <Link :href="contact()">Contact</Link>
-        </nav>
-    </header>
+    <div class="mx-auto flex min-h-screen max-w-5xl flex-col px-4">
+        <header
+            class="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between"
+        >
+            <Link :href="home()" class="font-display text-xl font-bold">
+                Mathias
+            </Link>
+            <nav class="flex gap-5 text-sm font-medium">
+                <Link :href="projectsIndex()" class="hover:text-brand">Projets</Link>
+                <Link :href="about()" class="hover:text-brand">À propos</Link>
+                <Link :href="contact()" class="hover:text-brand">Contact</Link>
+            </nav>
+        </header>
 
-    <main>
-        <slot />
-    </main>
+        <main class="flex-1">
+            <slot />
+        </main>
 
-    <footer>
-        <p>© Mathias</p>
-    </footer>
+        <footer
+            class="flex flex-col gap-2 border-t py-6 text-sm text-muted-foreground sm:flex-row sm:justify-between"
+        >
+            <p>© Mathias</p>
+        </footer>
+    </div>
+
+    <Toaster />
 </template>

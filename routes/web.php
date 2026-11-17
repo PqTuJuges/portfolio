@@ -4,10 +4,11 @@ use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return Inertia::render('Home', ['author' => 'Mathias']);
-})->name('home');
+
+Route::get('/', HomeController::class)->name('home');
+
 
 Route::get('projets', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('projets/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
