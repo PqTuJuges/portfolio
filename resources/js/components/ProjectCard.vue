@@ -18,11 +18,11 @@ defineProps({ project: Object });
             class="aspect-video w-full object-cover"
         />
         <div class="space-y-2 p-4">
-            <h3 class="font-display text-lg font-bold">
+            <h2 class="font-display text-lg font-bold">
                 <Link :href="show(project)" class="hover:text-brand">
                     {{ project.title }}
                 </Link>
-            </h3>
+            </h2>
             <p class="text-sm text-muted-foreground">{{ project.summary }}</p>
             <ul v-if="project.tags" class="flex flex-wrap gap-2">
                 <li v-for="tag in project.tags" :key="tag">

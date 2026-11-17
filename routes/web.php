@@ -16,6 +16,7 @@ Route::get('projets', [ProjectController::class, 'index'])->name('projects.index
 Route::get('projets/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::inertia('a-propos', 'About')->name('about');
+Route::inertia('mentions-legales', 'Legal')->name('legal');
 Route::get('contact', [ContactController::class, 'create'])->name('contact');
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 

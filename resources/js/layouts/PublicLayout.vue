@@ -1,7 +1,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { Toaster } from '@/components/ui/sonner';
-import { about, contact, home } from '@/routes';
+import { about, contact, home, legal } from '@/routes';
 import { index as projectsIndex } from '@/routes/projects';
 </script>
 
@@ -28,6 +28,7 @@ import { index as projectsIndex } from '@/routes/projects';
             class="flex flex-col gap-2 border-t py-6 text-sm text-muted-foreground sm:flex-row sm:justify-between"
         >
             <p>© Mathias</p>
+            <Link :href="legal()" class="underline">Mentions légales</Link>
         </footer>
     </div>
 
