@@ -2,6 +2,7 @@
 import { Form, Head, Link } from '@inertiajs/vue3';
 import ProjectController from '@/actions/App/Http/Controllers/Admin/ProjectController';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import {
     Dialog,
     DialogClose,
@@ -34,6 +35,7 @@ defineProps({
 </script>
 
 <template>
+
     <Head title="Projets" />
 
     <div class="p-6">
@@ -49,16 +51,27 @@ defineProps({
                 <TableRow>
                     <TableHead>Titre</TableHead>
                     <TableHead>Adresse</TableHead>
+                    <TableHead>État</TableHead>
                     <TableHead class="text-right">Actions</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 <TableRow v-for="project in projects" :key="project.id">
+                    <TableCell>
+                        <Badge v-if="project.published_at">Publié</Badge>
+                        <Badge v-else variant="secondary">Brouillon</Badge>
+                    </TableCell>
+
                     <TableCell class="font-medium">{{
                         project.title
-                    }}</TableCell>
+                        }}</TableCell>
                     <TableCell>/projets/{{ project.slug }}</TableCell>
                     <TableCell class="flex justify-end gap-2">
+                        <Form v-bind="ProjectController.togglePublished.form(project)" class="inline">
+                            <Button type="submit" variant="outline" size="sm">
+                                {{ project.published_at ? 'Dépublier' : 'Publier' }}
+                            </Button>
+                        </Form>
                         <Button as-child variant="outline" size="sm">
                             <Link :href="edit(project)">Modifier</Link>
                         </Button>
@@ -70,13 +83,8 @@ defineProps({
                                 </Button>
                             </DialogTrigger>
                             <DialogContent>
-                                <Form
-                                    v-bind="
-                                        ProjectController.destroy.form(project)
-                                    "
-                                    v-slot="{ processing }"
-                                    class="space-y-6"
-                                >
+                                <Form v-bind="ProjectController.destroy.form(project)
+                                    " v-slot="{ processing }" class="space-y-6">
                                     <DialogHeader>
                                         <DialogTitle>
                                             Supprimer « {{ project.title }} » ?
@@ -88,18 +96,11 @@ defineProps({
                                     </DialogHeader>
                                     <DialogFooter class="gap-2">
                                         <DialogClose as-child>
-                                            <Button
-                                                type="button"
-                                                variant="secondary"
-                                            >
+                                            <Button type="button" variant="secondary">
                                                 Annuler
                                             </Button>
                                         </DialogClose>
-                                        <Button
-                                            type="submit"
-                                            variant="destructive"
-                                            :disabled="processing"
-                                        >
+                                        <Button type="submit" variant="destructive" :disabled="processing">
                                             Supprimer
                                         </Button>
                                     </DialogFooter>

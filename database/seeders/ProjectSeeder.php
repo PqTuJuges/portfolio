@@ -62,7 +62,7 @@ class ProjectSeeder extends Seeder
             'cover_path' => 'images/sitephpcontact.jpg',
             'demo_url' => null,
             'repo_url' => null,
-            'published_at' => now(),
+            'published_at' => null,
             'position' => 2,
         ]);
         $sitephp->tags()->attach([$php->id, $css->id]);

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +20,12 @@ class Project extends Model
     {
         return ['published_at' => 'datetime'];
     }
+        #[Scope]
+    protected function published(Builder $query): void
+    {
+        $query->whereNotNull('published_at');
+    }
+
 
     /**
      * @return Attribute<string|null, never>

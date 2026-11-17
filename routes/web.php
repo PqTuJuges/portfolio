@@ -27,6 +27,8 @@ Route::middleware(['auth', 'verified'])
             ->except('show')
             ->names('projects')
             ->parameters(['projets' => 'project']);
+        Route::patch('projets/{project}/publication', [AdminProjectController::class, 'togglePublished'])
+            ->name('projects.toggle-published');
     });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';
