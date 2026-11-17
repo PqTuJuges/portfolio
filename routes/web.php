@@ -5,6 +5,8 @@ use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
+
 
 
 Route::get('/', HomeController::class)->name('home');
@@ -14,7 +16,8 @@ Route::get('projets', [ProjectController::class, 'index'])->name('projects.index
 Route::get('projets/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::inertia('a-propos', 'About')->name('about');
-Route::inertia('contact', 'Contact')->name('contact');
+Route::get('contact', [ContactController::class, 'create'])->name('contact');
+Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
