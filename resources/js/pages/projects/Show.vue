@@ -12,7 +12,7 @@ defineProps({ project: Object });
     <ul>
         <li v-for="tag in project.tags" :key="tag">{{ tag }}</li>
     </ul>
-    <div v-html="project.content"></div>
+    <div class="prose dark:prose-invert" v-html="project.content"></div>
     <p>
         <a v-if="project.demo_url" :href="project.demo_url">Démo</a>
         <a v-if="project.repo_url" :href="project.repo_url">Code</a>
